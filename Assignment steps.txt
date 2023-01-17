@@ -1,0 +1,16 @@
+1. Collect data from twitter
+	Created flume config file and ran below command to download twitter tweets in form of json
+	Command : bin/flume-ng agent -n TwitterAgent -f /home/pratap/apache-flume-1.6.0-bin/conf/flume.conf -Dflume.root.logger,console
+	
+2. Preprocessing the data using map only job (url removal, # tag removal, @ removal, stop word removal)
+	SentimentAnalysis map only job code attached
+	Command: yarn jar SentimentAnalysisPreprocessingJob.jar com.hadoop.poc.sentimentAnalysis.phase1.SentimentAnalysisPreprocessingDriver /user/pratap/tweets /output
+	
+3. Run hive queries to get sentiment regarding the keyword(bitcoin)
+	Attached the hive UDF queries used
+	
+Final Result for the keyword(bitcoin)
+Positive tweets --> 218
+Negative tweets --> 76
+Neutral tweets 	--> 1
+	
